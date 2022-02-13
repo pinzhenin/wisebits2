@@ -1,4 +1,10 @@
 <?php
+
+use app\components\interfaces\StopDomainsInterface;
+use app\components\interfaces\StopWordsInterface;
+use app\tests\mocks\services\StopDomainsServiceMock;
+use app\tests\mocks\services\StopWordsServiceMock;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/test_db.php';
 
@@ -39,4 +45,10 @@ return [
         ],
     ],
     'params' => $params,
+    'container' => [
+        'definitions' => [
+            StopWordsInterface::class => StopWordsServiceMock::class,
+            StopDomainsInterface::class => StopDomainsServiceMock::class,
+        ],
+    ],
 ];
